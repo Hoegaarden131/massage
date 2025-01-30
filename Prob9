@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Казино Рулетка</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        .roulette-wheel {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: conic-gradient(
+                red 0% 14.28%, 
+                black 14.28% 28.56%, 
+                red 28.56% 42.84%, 
+                black 42.84% 57.12%, 
+                red 57.12% 71.4%, 
+                black 71.4% 85.68%, 
+                red 85.68% 100%
+            );
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            transition: transform 5s ease-out;
+        }
+        .roulette-pointer {
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 30px solid white;
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .spin-button, .bet-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #e74c3c;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .spin-button:hover, .bet-button:hover {
+            background-color: #c0392b;
+        }
+        .result, .balance, .history {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+        .login-form, .register-form {
+            display: none;
+            margin-top: 20px;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Рулетка Казино</h1>
+
+    <div id="user-info">
+        <button class="login-button" onclick="toggleLoginForm()">Войти</button>
+        <button class="register-button" onclick="toggleRegisterForm()">Регистрация</button>
+        <div id="login-form" class="login-form">
+            <div class="form-group">
+                <input type="text" id="login-username" placeholder="Имя пользователя">
+            </div>
+            <div class="form-group">
+                <input type="password" id="login-password" placeholder="Пароль">
+            </div>
+            <button class="bet-button" onclick="loginUser()">Войти</button>
+        </div>
+        <div id="register-form" class="register-form">
+            <div class="form-group">
+                <input type="text" id="register-username" placeholder="Имя пользователя">
+            </div>
+            <div class="form-group">
+                <input type="password" id="register-password" placeholder="Пароль">
+            </div>
+            <button class="bet-button" onclick="registerUser()">Зарегистрироваться</button>
+        </div>
+    </div>
+
+    <div class="roulette-wheel" id="rouletteWheel">
+        <div class="roulette-pointer"></div>
+    </div>
+
+    <div class="form-group">
+        <label for="bet-amount">Сумма ставки:</label>
+        <input type="number" id="bet-amount" min="1" value="1">
+    </div>
+    <div class="form-group">
+        <label for="bet-type">Тип ставки:</label>
+        <select id="bet-type">
+            <option value="number">Число</option>
+            <option value="color">Цвет</option>
+            <option value="even_odd">Чет/нечет</option>
+        </select>
+    </div>
+    <div class="form-group" id="number-input" style="display: none;">
+        <label for="bet-number">Выберите число (0-36):</label>
+        <input type="number" id="bet-number" min="0" max="36">
+    </div>
+    <div class="form-group" id="color-input" style="display: none;">
+        <label for="bet-color">Выберите цвет:</label>
+        <select id="bet-color">
+            <option value="red">Красное</option>
+            <option value="black">Черное</option>
+        </select>
+    </div>
+    <div class="form-group" id="even_odd-input" style="display: none;">
+        <label for="bet-even_odd">Выберите чет/нечет:</label>
+        <select id="bet-even_odd">
+            <option value="even">Четное</option>
+            <option value="odd">Нечетное</option>
+        </select>
+    </div>
+    <button class="bet-button" onclick="placeBet()">Сделать ставку</button>
+    <button class="spin-button" onclick="spinRoulette()">Крутить рулетку</button>
+
+    <div class="balance" id="balance">Баланс: $1000</div>
+    <div class="result" id="result">Ожидание результата...</div>
+    <div class="history" id="history">История игр:</div>
+
+    <audio id="spinSound" src="https://www.soundjay.com/button/sounds/beep-07.mp3" preload="auto"></audio>
+    <audio id="winSound" src="https://www.soundjay.com/button/sounds/coin-01a.mp3" preload="auto"></audio>
+
+    <script>
+        let userBalance = 1000;
+        let history = [];
+        let currentBet = null;
+
+        function toggleLoginForm() {
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('register-form').style.display = 'none';
+        }
+
+        function toggleRegisterForm() {
+            document.getElementById('register-form').style.display = 'block';
+            document.getElementById('login-form').style.display = 'none';
+        }
+
+        function loginUser() {
+            alert('Вход выполнен!');
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'none';
+        }
+
+        function registerUser() {
+            alert('Регистрация завершена!');
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'none';
+        }
+
+        function updateBalance() {
+            document.getElementById('balance').textContent = `Баланс: $${userBalance}`;
+        }
+
+        function placeBet() {
+            const betAmount = parseInt(document.getElementById('bet-amount').value);
+            const betType = document.getElementById('bet-type').value;
+
+            if (betAmount > userBalance) {
+                alert('Недостаточно средств!');
+                return;
+            }
+
+            if (betType === 'number') {
+                const betNumber = parseInt(document.getElementById('bet-number').value);
+                if (isNaN(betNumber) || betNumber < 0 || betNumber > 36) {
+                    alert('Неверное число!');
+                    return;
+                }
+                currentBet = {type: 'number', number: betNumber, amount: betAmount};
+            } else if (betType === 'color') {
+                const betColor = document.getElementById('bet-color').value;
+                currentBet = {type: 'color', color: betColor, amount: betAmount};
+            } else if (betType === 'even_odd') {
+                const betEvenOdd = document.getElementById('bet-even_odd').value;
+                currentBet = {type: 'even_odd', even_odd: betEvenOdd, amount: betAmount};
+            }
+
+            userBalance -= betAmount;
+            updateBalance();
+            document.getElementById('result').textContent = 'Ожидание результата...';
+        }
+
+        function spinRoulette() {
+            if (!currentBet) {
+                alert('Сделайте ставку!');
+                return;
+            }
+
+            const resultElement = document.getElementById('result');
+            const rouletteWheel = document.getElementById('rouletteWheel');
+            const spinSound = document.getElementById('spinSound');
+            const winSound = document.getElementById('winSound');
+
+            // Play spin sound
+            spinSound.play();
+
+            // Animate the wheel
+            const rotation = Math.floor(Math.random() * 360) + 3600; // Random rotation between 3600 and 3959 degrees
+            rouletteWheel.style.transform = `rotate(${rotation}deg)`;
+
+            // Simulate spinning time
+            setTimeout(() => {
+                const randomNumber = Math.floor(Math.random() * 37); // 0-36
+
+                let resultText = '';
+                let winAmount = 0;
+
+                if (randomNumber === 0) {
+                    resultText = 'Выпало зеро!';
+                } else {
+                    const color = (randomNumber % 2 === 0) ? 'Черное' : 'Красное';
+                    resultText = `Выпало ${color} ${randomNumber}`;
+
+                    if (currentBet.type === 'number' && currentBet.number === randomNumber) {
+                        winAmount = currentBet.amount * 35;
+                    } else if (currentBet.type === 'color' && currentBet.color === color.toLowerCase()) {
+                        winAmount = currentBet.amount * 2;
+                    } else if (currentBet.type === 'even_odd' && ((currentBet.even_odd === 'even' && randomNumber % 2 === 0) || (currentBet.even_odd === 'odd' && randomNumber % 2 !== 0))) {
+                        winAmount = currentBet.amount * 2;
+                    }
+                }
+
+                if (winAmount > 0) {
+                    userBalance += winAmount;
+                    resultText += ` Вы выиграли $${winAmount}!`;
+                    winSound.play();
+                } else {
+                    resultText += ' Вы проиграли.';
+                }
+
+                userBalance = Math.max(userBalance, 0);
+                updateBalance();
+                resultElement.textContent = resultText;
+                history.push({bet: currentBet, result: randomNumber, win: winAmount});
+                updateHistory();
+
+                currentBet = null;
+            }, 5000); // Match this timeout with the CSS transition duration
+        }
+
+        function updateHistory() {
+            const historyElement = document.getElementById('history');
+            historyElement.innerHTML = 'История игр:';
+            history.forEach((game, index) => {
+                let gameText = `Игра ${index + 1}: `;
+                gameText += `Ставка: ${game.bet.amount}$ на ${game.bet.type} (${JSON.stringify(game.bet)}) -> `;
+                gameText += `Результат: ${game.result} (Выигрыш: ${game.win}$)`;
+                historyElement.innerHTML += `<br>${gameText}`;
+            });
+        }
+
+        document.getElementById('bet-type').addEventListener('change', function () {
+            const selectedType = this.value;
+            document.getElementById('number-input').style.display = (selectedType === 'number') ? 'block' : 'none';
+            document.getElementById('color-input').style.display = (selectedType === 'color') ? 'block' : 'none';
+            document.getElementById('even_odd-input').style.display = (selectedType === 'even_odd') ? 'block' : 'none';
+        });
+
+        updateBalance();
+    </script>
+
+</body>
+</html>

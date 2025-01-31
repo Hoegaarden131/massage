@@ -2,8 +2,17 @@
 const adminCodeInput = document.getElementById('admin-code');
 const adminLoginButton = document.getElementById('admin-login');
 const editableText = document.getElementById('editable-text');
+const saveChangesButton = document.getElementById('save-changes');
 
 let isAdminLoggedIn = false;
+
+// Загрузка сохраненного текста при загрузке страницы
+window.onload = function() {
+    const savedText = localStorage.getItem('editableText');
+    if (savedText) {
+        editableText.innerHTML = savedText;
+    }
+};
 
 // Обработчик клика на кнопку "Admin Login"
 adminLoginButton.addEventListener('click', () => {
@@ -15,6 +24,7 @@ adminLoginButton.addEventListener('click', () => {
         adminLoginButton.textContent = 'Admin Login';
         editableText.contentEditable = false;
         editableText.classList.remove('edit-mode');
+        saveChangesButton.style.display = 'none';
     }
 });
 
@@ -25,6 +35,7 @@ adminCodeInput.addEventListener('change', (event) => {
         adminLoginButton.click(); // Переключаем состояние кнопки
         editableText.contentEditable = true;
         editableText.classList.add('edit-mode');
+        saveChangesButton.style.display = 'inline-block';
     } else {
         alert('Incorrect admin code');
     }
@@ -36,4 +47,10 @@ editableText.addEventListener('click', () => {
     if (isAdminLoggedIn) {
         editableText.focus();
     }
+});
+
+// Обработчик клика на кнопку "Save Changes"
+saveChangesButton.addEventListener('click', () => {
+    localStorage.setItem('editableText', editableText.innerHTML);
+    alert('Changes saved!');
 });

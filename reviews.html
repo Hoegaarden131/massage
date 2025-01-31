@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Отзывы - Услуги Трубочиста</title>
+    <title>Отзывы</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,36 +13,44 @@
             padding: 0;
         }
         header {
-            background-color: #2b7a0b;
-            color: white;
-            padding: 10px 0;
+            background-color: #b3d9b3;
+            padding: 20px;
             text-align: center;
         }
         nav {
             display: flex;
             justify-content: center;
-            background-color: #45a049;
+            background-color: #ccffcc;
+            padding: 10px;
         }
         nav a {
-            color: white;
-            padding: 14px 20px;
+            margin: 0 15px;
             text-decoration: none;
-            text-align: center;
+            color: #333;
+            font-weight: bold;
         }
-        nav a:hover {
-            background-color: #3e8e41;
-        }
-        .container {
+        section {
             padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
         }
-        .reviews form {
-            margin-top: 20px;
+        .review {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #b3d9b3;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Отзывы - Услуги Трубочиста</h1>
+        <h1>Отзывы</h1>
     </header>
     <nav>
         <a href="index.html">Главная</a>
@@ -51,15 +59,22 @@
         <a href="contacts.html">Контакты</a>
         <a href="faq.html">FAQ</a>
     </nav>
-    <div class="container">
-        <h2>Отзывы наших клиентов</h2>
-        <p>Отличный сервис! Очень доволен качеством работы.</p>
-        <p>Профессионально и быстро! Рекомендую всем!</p>
-        <p>Очень довольны результатом. Спасибо большое!</p>
-        <form>
-            <textarea placeholder="Ваш отзыв" rows="4" cols="50"></textarea><br>
-            <button type="submit">Добавить отзыв</button>
-        </form>
-    </div>
+    <section>
+        <div class="review">
+            <h3>Мария</h3>
+            <p>Очень довольна услугами стриптизеров! Парни были просто потрясающие, атмосфера была на высшем уровне. Рекомендую всем!</p>
+        </div>
+        <div class="review">
+            <h3>Анна</h3>
+            <p>Замечательный вечер! Все было организовано на высшем уровне, парни очень веселые и профессиональные. Буду обращаться снова!</p>
+        </div>
+        <div class="review">
+            <h3>Иван</h3>
+            <p>Отлично провели время с друзьями! Парни выступали просто блестяще, атмосфера была расслабляющей и веселой. Очень понравилось!</p>
+        </div>
+    </section>
+    <footer>
+        &copy; Услуги Стриптизеров 2023
+    </footer>
 </body>
 </html>

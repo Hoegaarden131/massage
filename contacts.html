@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакты - Услуги Трубочиста</title>
+    <title>Контакты</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,36 +13,44 @@
             padding: 0;
         }
         header {
-            background-color: #2b7a0b;
-            color: white;
-            padding: 10px 0;
+            background-color: #b3d9b3;
+            padding: 20px;
             text-align: center;
         }
         nav {
             display: flex;
             justify-content: center;
-            background-color: #45a049;
+            background-color: #ccffcc;
+            padding: 10px;
         }
         nav a {
-            color: white;
-            padding: 14px 20px;
+            margin: 0 15px;
             text-decoration: none;
-            text-align: center;
+            color: #333;
+            font-weight: bold;
         }
-        nav a:hover {
-            background-color: #3e8e41;
-        }
-        .container {
+        section {
             padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
         }
-        .contacts {
-            line-height: 1.6;
+        .contact-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #b3d9b3;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Контакты - Услуги Трубочиста</h1>
+        <h1>Контакты</h1>
     </header>
     <nav>
         <a href="index.html">Главная</a>
@@ -51,12 +59,33 @@
         <a href="contacts.html">Контакты</a>
         <a href="faq.html">FAQ</a>
     </nav>
-    <div class="container">
-        <h2>Контактная информация</h2>
-        <div class="contacts">
-            <p>Администратор: Кирилл Клитороискатель +79498882222</p>
-            <p>Главный трубочист: Роман Заднепроходный +79499229222</p>
+    <section>
+        <h2>Свяжитесь с нами</h2>
+
+        <h3>Наши трубочисты:</h3>
+        <div class="contact-item">
+            <strong>Роман Переднийпривод</strong><br>
+            Телефон: +7 949 455 01 66<br>
+            <a href="https://vk.com/id487521507" target="_blank">VK: vk.com/id487521507</a>
         </div>
-    </div>
+        <div class="contact-item">
+            <strong>Вова Клитороискатель</strong><br>
+            Телефон: +7 949 401 17 87<br>
+            <a href="https://vk.com/id179355670" target="_blank">VK: vk.com/id179355670</a>
+        </div>
+
+        <h3>Администрация:</h3>
+        <div class="contact-item">
+            <strong>Кирилл Фимозность</strong><br>
+            Телефон: +7 949 455 01 69<br>
+            <a href="https://vk.com/id484412732" target="_blank">VK: vk.com/id484412732</a>
+        </div>
+
+        <h3>Мы находимся по адресу:</h3>
+        <p>г. Харцызск, м-н Металлургов, д. 51а</p>
+    </section>
+    <footer>
+        &copy; Услуги Стриптизеров 2023
+    </footer>
 </body>
 </html>

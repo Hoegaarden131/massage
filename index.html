@@ -3,64 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Услуги Стриптизеров</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #e6f7e6; /* светло-зеленый фон */
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #b3d9b3; /* более темный светло-зеленый */
-            padding: 20px;
-            text-align: center;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #ccffcc; /* еще один оттенок зеленого */
-            padding: 10px;
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
-        }
-        section {
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #b3d9b3;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+    <title>Крестики-Нолики</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Услуги Стриптизеров</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="profile.html">Профиль</a></li>
+                <li><a href="forum.html">Форум</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <a href="index.html">Главная</a>
-        <a href="gallery.html">Галерея</a>
-        <a href="reviews.html">Отзывы</a>
-        <a href="contacts.html">Контакты</a>
-        <a href="faq.html">FAQ</a>
-    </nav>
-    <section>
-        <h2>Добро пожаловать!</h2>
-        <p>Предоставляем все виды эротического гетеро и гейского меню. Работники молодые накаченные парни с бритыми бубенцами, которые можно помацать. Выезд в день заказа.</p>
-    </section>
-    <footer>
-        &copy; Эра стриптиза  2003
-    </footer>
+
+    <main>
+        <h1>Игра в Крестики-Нолики</h1>
+        <div id="game-options">
+            <label for="player-choice">Выберите сторону:</label>
+            <select id="player-choice">
+                <option value="X">Крестики (X)</option>
+                <option value="O">Нолики (O)</option>
+            </select>
+            <button id="start-game">Старт</button>
+        </div>
+
+        <div id="game-board" style="display: none;">
+            <div class="grid"></div>
+            <p>Побед: <span id="wins">0</span> | Поражений: <span id="losses">0</span></p>
+        </div>
+    </main>
+
+    <script src="game.js"></script>
 </body>
 </html>

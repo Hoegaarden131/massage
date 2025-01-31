@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wikipedia</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Верхняя навигационная панель -->
+    <div class="top-navigation">
+        <div class="logo-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Wikipedia-logo.png" alt="Wikipedia Logo" width="150">
+        </div>
+        <div class="admin-panel">
+            <input type="text" id="admin-code" placeholder="Admin Code" style="display:none;">
+            <button id="admin-login">Admin Login</button>
+        </div>
+    </div>
 
+    <!-- Левая боковая панель -->
+    <div class="side-navigation">
+        <ul>
+            <li><a href="#">Main Page</a></li>
+            <li><a href="#">Contents</a></li>
+            <li><a href="#">Current Events</a></li>
+            <li><a href="#">Random Article</a></li>
+            <li><a href="#">Donate to Wikipedia</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+    </div>
+
+    <!-- Основное содержимое -->
+    <div class="main-content">
+        <h1>Welcome to My Wikipedia</h1>
+        <p id="editable-text">This is a simple imitation of Wikipedia's main page. You can add more sections and articles here.</p>
+        <h2>Featured Article</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada.</p>
+        <h2>In the News</h2>
+        <ul>
+            <li>News Item 1</li>
+            <li>News Item 2</li>
+            <li>News Item 3</li>
+        </ul>
+    </div>
+
+    <!-- Нижняя панель навигации -->
+    <div class="bottom-navigation">
+        <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

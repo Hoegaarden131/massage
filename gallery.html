@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Галерея - Услуги Трубочиста</title>
+    <title>Галерея</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,37 +13,49 @@
             padding: 0;
         }
         header {
-            background-color: #2b7a0b;
-            color: white;
-            padding: 10px 0;
+            background-color: #b3d9b3;
+            padding: 20px;
             text-align: center;
         }
         nav {
             display: flex;
             justify-content: center;
-            background-color: #45a049;
+            background-color: #ccffcc;
+            padding: 10px;
         }
         nav a {
-            color: white;
-            padding: 14px 20px;
+            margin: 0 15px;
             text-decoration: none;
-            text-align: center;
+            color: #333;
+            font-weight: bold;
         }
-        nav a:hover {
-            background-color: #3e8e41;
-        }
-        .container {
+        section {
             padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
         }
-        .gallery img {
-            width: 23%;
-            margin: 1%;
+        img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin: 10px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #b3d9b3;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Галерея - Услуги Трубочиста</h1>
+        <h1>Галерея</h1>
     </header>
     <nav>
         <a href="index.html">Главная</a>
@@ -52,14 +64,14 @@
         <a href="contacts.html">Контакты</a>
         <a href="faq.html">FAQ</a>
     </nav>
-    <div class="container">
-        <h2>Наша работа</h2>
-        <div class="gallery">
-            <img src="https://via.placeholder.com/150" alt="Работа 1">
-            <img src="https://via.placeholder.com/150" alt="Работа 2">
-            <img src="https://via.placeholder.com/150" alt="Работа 3">
-            <img src="https://via.placeholder.com/150" alt="Работа 4">
-        </div>
-    </div>
+    <section>
+        <img src="https://via.placeholder.com/200" alt="Фото 1">
+        <img src="https://via.placeholder.com/200" alt="Фото 2">
+        <img src="https://via.placeholder.com/200" alt="Фото 3">
+        <img src="https://via.placeholder.com/200" alt="Фото 4">
+    </section>
+    <footer>
+        &copy; Услуги Стриптизеров 2023
+    </footer>
 </body>
 </html>

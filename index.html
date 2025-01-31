@@ -4,35 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Wikipedia</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Верхняя навигационная панель -->
-    <div class="top-navigation">
-        <div class="logo-container">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Wikipedia-logo.png" alt="Wikipedia Logo" width="150">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Wikipedia-logo.png" alt="Wikipedia Logo" width="50">
+            My Wikipedia
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contents</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Current Events</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Random Article</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <div class="admin-panel ml-2">
+                <input type="text" id="admin-code" placeholder="Admin Code" style="display:none;">
+                <button id="admin-login" class="btn btn-primary">Admin Login</button>
+                <button id="save-changes" class="btn btn-success" style="display:none;">Save Changes</button>
+                <button id="new-article" class="btn btn-info" style="display:none;">New Article</button>
+            </div>
         </div>
-        <div class="admin-panel">
-            <input type="text" id="admin-code" placeholder="Admin Code" style="display:none;">
-            <button id="admin-login">Admin Login</button>
-            <button id="save-changes" style="display:none;">Save Changes</button>
-        </div>
-    </div>
+    </nav>
 
     <!-- Левая боковая панель -->
     <div class="side-navigation">
-        <ul>
-            <li><a href="#">Main Page</a></li>
-            <li><a href="#">Contents</a></li>
-            <li><a href="#">Current Events</a></li>
-            <li><a href="#">Random Article</a></li>
-            <li><a href="#">Donate to Wikipedia</a></li>
-            <li><a href="#">Help</a></li>
-        </ul>
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action active">Main Page</a>
+            <a href="#" class="list-group-item list-group-item-action">Contents</a>
+            <a href="#" class="list-group-item list-group-item-action">Current Events</a>
+            <a href="#" class="list-group-item list-group-item-action">Random Article</a>
+            <a href="#" class="list-group-item list-group-item-action">Donate to Wikipedia</a>
+            <a href="#" class="list-group-item list-group-item-action">Help</a>
+        </div>
     </div>
 
     <!-- Основное содержимое -->
-    <div class="main-content">
+    <div class="main-content container mt-4">
         <h1>Welcome to My Wikipedia</h1>
         <p id="editable-text">This is a simple imitation of Wikipedia's main page. You can add more sections and articles here.</p>
         <h2>Featured Article</h2>
@@ -46,14 +72,20 @@
     </div>
 
     <!-- Нижняя панель навигации -->
-    <div class="bottom-navigation">
-        <ul>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms of Use</a></li>
-            <li><a href="#">Contact Us</a></li>
-        </ul>
-    </div>
+    <footer class="bg-light text-center py-3">
+        <div class="container">
+            <ul class="list-unstyled d-flex justify-content-center">
+                <li><a href="#" class="mx-2">Privacy Policy</a></li>
+                <li><a href="#" class="mx-2">Terms of Use</a></li>
+                <li><a href="#" class="mx-2">Contact Us</a></li>
+            </ul>
+        </div>
+    </footer>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="scripts.js"></script>
 </body>
 </html>

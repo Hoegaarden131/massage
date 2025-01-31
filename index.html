@@ -1,91 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Wikipedia</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>Галерея фотографий</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .gallery-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .photo-frame {
+            width: 200px;
+            height: 200px;
+            border: 2px dashed #ccc;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .photo-frame img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+        .upload-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .upload-button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <!-- Верхняя навигационная панель -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/63/Wikipedia-logo.png" alt="Wikipedia Logo" width="50">
-            My Wikipedia
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contents</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Current Events</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Random Article</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-            <div class="admin-panel ml-2">
-                <input type="text" id="admin-code" placeholder="Admin Code" style="display:none;">
-                <button id="admin-login" class="btn btn-primary">Admin Login</button>
-                <button id="save-changes" class="btn btn-success" style="display:none;">Save Changes</button>
-                <button id="new-article" class="btn btn-info" style="display:none;">New Article</button>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Левая боковая панель -->
-    <div class="side-navigation">
-        <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action active">Main Page</a>
-            <a href="#" class="list-group-item list-group-item-action">Contents</a>
-            <a href="#" class="list-group-item list-group-item-action">Current Events</a>
-            <a href="#" class="list-group-item list-group-item-action">Random Article</a>
-            <a href="#" class="list-group-item list-group-item-action">Donate to Wikipedia</a>
-            <a href="#" class="list-group-item list-group-item-action">Help</a>
+    <h1>Галерея фотографий</h1>
+
+    <div class="gallery-container">
+        <!-- Рамка 1 -->
+        <div class="photo-frame" id="frame1" onclick="openFileInput(1)">
+            <input type="file" id="fileInput1" accept="image/*" style="display:none;" onchange="loadImage(this, 1)">
+            <span>Загрузить фото</span>
+        </div>
+
+        <!-- Рамка 2 -->
+        <div class="photo-frame" id="frame2" onclick="openFileInput(2)">
+            <input type="file" id="fileInput2" accept="image/*" style="display:none;" onchange="loadImage(this, 2)">
+            <span>Загрузить фото</span>
+        </div>
+
+        <!-- Рамка 3 -->
+        <div class="photo-frame" id="frame3" onclick="openFileInput(3)">
+            <input type="file" id="fileInput3" accept="image/*" style="display:none;" onchange="loadImage(this, 3)">
+            <span>Загрузить фото</span>
         </div>
     </div>
 
-    <!-- Основное содержимое -->
-    <div class="main-content container mt-4">
-        <h1>Welcome to My Wikipedia</h1>
-        <p id="editable-text">This is a simple imitation of Wikipedia's main page. You can add more sections and articles here.</p>
-        <h2>Featured Article</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum. Cras venenatis euismod malesuada.</p>
-        <h2>In the News</h2>
-        <ul>
-            <li>News Item 1</li>
-            <li>News Item 2</li>
-            <li>News Item 3</li>
-        </ul>
-    </div>
+    <button class="upload-button" onclick="saveChanges()">Сохранить изменения</button>
 
-    <!-- Нижняя панель навигации -->
-    <footer class="bg-light text-center py-3">
-        <div class="container">
-            <ul class="list-unstyled d-flex justify-content-center">
-                <li><a href="#" class="mx-2">Privacy Policy</a></li>
-                <li><a href="#" class="mx-2">Terms of Use</a></li>
-                <li><a href="#" class="mx-2">Contact Us</a></li>
-            </ul>
-        </div>
-    </footer>
+    <script>
+        let uploadedImages = [];
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="scripts.js"></script>
+        function openFileInput(frameNumber) {
+            document.getElementById('fileInput' + frameNumber).click();
+        }
+
+        function loadImage(input, frameNumber) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var img = document.createElement('img');
+                    img.src = e.target.result;
+                    var frame = document.getElementById('frame' + frameNumber);
+                    frame.innerHTML = '';
+                    frame.appendChild(img);
+                }
+                reader.readAsDataURL(input.files[0]);
+
+                // Сохраняем файл в массив для последующей загрузки на сервер
+                uploadedImages[frameNumber - 1] = input.files[0];
+            }
+        }
+
+        async function saveChanges() {
+            for (let i = 0; i < uploadedImages.length; i++) {
+                if (uploadedImages[i]) {
+                    const formData = new FormData();
+                    formData.append('photo', uploadedImages[i]);
+
+                    try {
+                        const response = await fetch('http://localhost:3000/upload', {
+                            method: 'POST',
+                            body: formData
+                        });
+
+                        if (response.ok) {
+                            const data = await response.json();
+                            alert(`Фото успешно загружено: ${data.imageUrl}`);
+                        } else {
+                            alert('Ошибка при загрузке файла');
+                        }
+                    } catch (error) {
+                        console.error('Ошибка:', error);
+                        alert('Произошла ошибка при загрузке файла');
+                    }
+                }
+            }
+        }
+    </script>
+
 </body>
 </html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рулетка</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Шапка -->
+    <header>
+        <div class="container">
+            <h1>Персональные тренировки на дому</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="reviews.html">Отзывы</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                    <li><a href="roulette.html">Рулетка</a></li>
+                    <li><a href="faq.html">Часто задаваемые вопросы</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Рулетка -->
+    <section id="roulette" class="content-section">
+        <div class="container">
+            <h2>Рулетка скидок</h2>
+            <p>Попробуйте свою удачу и получите скидку на первую тренировку!</p>
+
+            <div id="roulette-wheel">
+                <button onclick="spinWheel()">Крутить рулетку</button>
+                <p id="result"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Персональные тренировки</p>
+        </div>
+    </footer>
+
+    <script>
+        function spinWheel() {
+            const prizes = ["10% скидка", "20% скидка", "30% скидка", "Бесплатная тренировка"];
+            const randomIndex = Math.floor(Math.random() * prizes.length);
+            document.getElementById("result").textContent = "Вы выиграли: " + prizes[randomIndex];
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold Pass - Standoff 2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Шапка -->
+    <header>
+        <div class="container">
+            <h1>Магазин Standoff 2</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="gold-pass.html">Gold Pass</a></li>
+                    <li><a href="gold-packs.html">Паки Gold</a></li>
+                    <li><a href="profile.html">Профиль</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Страница Gold Pass -->
+    <section id="gold-pass" class="content-section">
+        <div class="container">
+            <h2>Gold Pass</h2>
+            <div class="product-card">
+                <img src="gold-pass-basic.png" alt="Gold Pass Basic">
+                <h3>Базовый Gold Pass</h3>
+                <p>Цена: 99 рублей</p>
+                <button onclick="buy('gold-pass-basic')">Купить</button>
+            </div>
+            <div class="product-card">
+                <img src="gold-pass-premium.png" alt="Gold Pass Premium">
+                <h3>Премиум Gold Pass</h3>
+                <p>Цена: 199 рублей</p>
+                <button onclick="buy('gold-pass-premium')">Купить</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Магазин Standoff 2</p>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

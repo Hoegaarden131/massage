@@ -31,6 +31,12 @@
             <p>Попробуйте свою удачу и получите скидку на первую тренировку!</p>
 
             <div id="roulette-wheel">
+                <div class="wheel">
+                    <div class="segment prize-1">10% скидка</div>
+                    <div class="segment prize-2">20% скидка</div>
+                    <div class="segment prize-3">30% скидка</div>
+                    <div class="segment prize-4">Бесплатная тренировка</div>
+                </div>
                 <button onclick="spinWheel()">Крутить рулетку</button>
                 <p id="result"></p>
             </div>
@@ -49,6 +55,11 @@
             const prizes = ["10% скидка", "20% скидка", "30% скидка", "Бесплатная тренировка"];
             const randomIndex = Math.floor(Math.random() * prizes.length);
             document.getElementById("result").textContent = "Вы выиграли: " + prizes[randomIndex];
+
+            // Анимация вращения
+            const wheel = document.querySelector('.wheel');
+            wheel.style.transition = 'transform 3s ease-out';
+            wheel.style.transform = `rotate(${Math.random() * 3600 + 360 * randomIndex}deg)`;
         }
     </script>
 

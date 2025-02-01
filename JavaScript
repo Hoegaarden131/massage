@@ -1,0 +1,35 @@
+document.getElementById('bookingForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('name').value.trim();
+    const date = document.getElementById('date').value;
+
+    if (!name || !date) {
+        alert('Пожалуйста, заполните все поля');
+        return;
+    }
+
+    // Отправка данных на сервер
+    fetch('/book-training', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: name,
+            date: date
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Вы успешно записались на тренировку!');
+        } else {
+            alert('Произошла ошибка при записи.');
+        }
+    })
+    .catch(error => {
+        console.error('Ошибка:', error);
+        alert('Произошла ошибка при связи с сервером.');
+    });
+});

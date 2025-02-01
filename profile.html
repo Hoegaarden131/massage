@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль - Standoff 2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Шапка -->
+    <header>
+        <div class="container">
+            <h1>Магазин Standoff 2</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="gold-pass.html">Gold Pass</a></li>
+                    <li><a href="gold-packs.html">Паки Gold</a></li>
+                    <li><a href="profile.html">Профиль</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Страница Профиля -->
+    <section id="profile" class="content-section">
+        <div class="container">
+            <h2>Ваш профиль</h2>
+            <form id="userIdForm">
+                <label for="userId">Игровой ID:</label>
+                <input type="text" id="userId" name="userId" required>
+                <button type="submit">Подтвердить</button>
+            </form>
+            <p id="userIdMessage"></p>
+            <h3>История покупок</h3>
+            <ul id="purchaseHistory">
+                <!-- Здесь будут отображаться покупки -->
+            </ul>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Магазин Standoff 2</p>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
